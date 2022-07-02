@@ -19,6 +19,11 @@ app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 db.init_app(app)
 CORS(app, support_credentials=True)
 
+@app.get("/auth")
+@auth_required
+def get_auth_status():
+    return "Authenticated"
+
 @app.get("/oauth/callback")
 def oauth_callback():
     code = request.args["code"]
