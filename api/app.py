@@ -14,6 +14,7 @@ app = Flask(__name__)
 discord_api = APIClient(token=os.environ["BOT_TOKEN"], client_secret=os.environ["OAUTH_CLIENT_SECRET"])
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["DATABASE_URI"]
 app.config["SESSION_COOKIE_HTTPONLY"] = True
+app.config["SESSION_COOKIE_SECURE=True"] = True
 app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 db.init_app(app)
 CORS(app, support_credentials=True)
