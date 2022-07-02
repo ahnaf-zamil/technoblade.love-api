@@ -24,9 +24,9 @@ CORS(app, support_credentials=True)
 def get_auth_status():
     return "Authenticated"
 
-@app.get("/oauth/callback")
+@app.post("/oauth/callback")
 def oauth_callback():
-    code = request.args["code"]
+    code = request.json["code"]
     access_token = discord_api.oauth.get_access_token(
         code, redirect_uri=os.environ["REDIRECT_URI"]
     ).access_token
