@@ -17,7 +17,7 @@ app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SECURE=True"] = True
 app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 db.init_app(app)
-CORS(app, support_credentials=True)
+CORS(app, supports_credentials=True)
 
 @app.get("/auth")
 @auth_required
