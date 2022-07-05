@@ -18,3 +18,7 @@ def auth_required(f):
 
         return f(*args, **kwargs)
     return inner
+
+def get_username_from_jwt(token):
+    data = jwt.decode(token, os.environ["SECRET_KEY"], algorithms=["HS256"])
+    return data["username"]
